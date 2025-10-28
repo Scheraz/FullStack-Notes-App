@@ -4,9 +4,15 @@ const notesRoutes = require('./routes/notesRoutes')
 const app = express()
 const rateLimitMiddleware = require('./middleware/rateLimiter')
 const connectDB = require('./db/db')
+const cors = require('cors')
 
 //MIDDLEWARE
 app.use(express.json())
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+  })
+)
 app.use(rateLimitMiddleware)
 
 //ROUTES
